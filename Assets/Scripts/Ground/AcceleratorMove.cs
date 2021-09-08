@@ -10,8 +10,11 @@ public class AcceleratorMove : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Debug.Log("Accelerator");
-            var rb = other.GetComponent<MovmentObject>();
+            Debug.Log("Work trigger");
+            other.GetComponent<InputPlayer>().StartCor();
+            
         }
     }
+
+   
 }

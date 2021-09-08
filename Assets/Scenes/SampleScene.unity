@@ -224,7 +224,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
@@ -298,18 +297,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 18, y: 90, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec0093c56711a534f81f1853acf7f41f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,11 +431,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1135905375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76895574dd9d61843b58a0a287d0eca5, type: 3}
+  m_Script: {fileID: 11500000, guid: ec0093c56711a534f81f1853acf7f41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedForward: 10
-  speedHorizontal: 0.5
+  movmentObject:
+    speedForward: 3
+    speedHorizontal: 10
+    sprint: 0
 --- !u!1 &2077387789
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +485,6 @@ MonoBehaviour:
   prefabs:
   - {fileID: 378805400543621798, guid: 931cc78ce1937f343bb5b8cda63ec242, type: 3}
   - {fileID: 8816384925999438708, guid: f5193794f09b7164289c874b77aeb7d8, type: 3}
-  - {fileID: 3439815050343620388, guid: 103e7f1a8f690884c981fc46e2d283fe, type: 3}
   count: 20
 --- !u!114 &2077387792
 MonoBehaviour:

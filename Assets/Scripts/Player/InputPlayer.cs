@@ -8,20 +8,40 @@ using UnityEngine;
 /// </summary>
 public class InputPlayer : MonoBehaviour
 {
-    public static InputPlayer _instantion;
-    public event Action<float> Moving = delegate { };
+    [SerializeField] MovmentObject movmentObject;
+    float dirX;
+
+    public MovmentObject MovmentObject { get => movmentObject; set => movmentObject = value; }
 
     private void Awake()
     {
-        if (!_instantion)
-        {
-            _instantion = this;
-        }
+        movmentObject.Rb = GetComponent<Rigidbody>();  
     }
 
-
-    void Update()
+    private void Update()
     {
-        Moving(Input.GetAxis("Horizontal"));
+        dirX = -Input.GetAxis("Horizontal");
+    }
+
+    private void FixedUpdate()
+    {
+        movmentObject.Rb.velocity = new Vector3(movmentObject.SpeedForward + movmentObject.Sprint, movmentObject.Rb.velocity.y, movmentObject.Rb.velocity.z);
+        movmentObject.Moving(dirX);
+    }
+
+    public void StartCor()
+    {
+        StartCoroutine(DecreaseSprint());
+    }
+
+    public IEnumerator DecreaseSprint()
+    {
+        movmentObject.Sprint = 5;
+        while (movmentObject.Sprint >= 0)
+        {
+            movmentObject.Sprint -= .01f;
+            yield return null;
+        }
+        movmentObject.Sprint = 0;
     }
 }

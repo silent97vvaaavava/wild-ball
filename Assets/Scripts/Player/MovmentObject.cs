@@ -2,40 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class MovmentObject : MonoBehaviour
+[System.Serializable]
+public class MovmentObject 
 {
     [SerializeField] private float speedForward;
     [SerializeField] private float speedHorizontal;
+    [SerializeField] private float sprint;
 
-    Rigidbody rb;
+    private Rigidbody rb;
 
     public float SpeedForward { get => speedForward; set => speedForward = value; }
+    public float SpeedHorizontal { get => speedHorizontal; set => speedHorizontal = value; }
+    public Rigidbody Rb { get => rb; set => rb = value; }
+    public float Sprint { get => sprint;  set => sprint = value; }
 
-    private void Awake()
+    public MovmentObject(float speedForward, float speedHorizontal, Rigidbody rb)
     {
-        rb = GetComponent<Rigidbody>();
+        this.speedForward = speedForward;
+        this.speedHorizontal = speedHorizontal;
+        this.rb = rb;
     }
 
-    private void Start()
+    public void Moving(float direction)
     {
-        InputPlayer._instantion.Moving += Moving;
+        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speedHorizontal * direction); // написать интерполяцию для поворотов: медленно стартует и затухает (плавные смещения) 
     }
 
-    void Moving(float direction)
+    public IEnumerator DecreaseSprint()
     {
-        rb.AddForce(Vector3.back * direction * speedHorizontal, ForceMode.Impulse);
+        sprint = 5;
+        while (sprint > 0)
+        {
+            sprint -= .01f;
+            yield return null;
+        }
+        sprint = 0;
     }
-
-
-    private void FixedUpdate()
-    {
-        rb.AddForce(Vector3.right * Time.deltaTime * speedForward, ForceMode.Impulse);
-    }
-
-    private void OnDestroy()
-    {
-        InputPlayer._instantion.Moving -= Moving;
-    }
-
 }
