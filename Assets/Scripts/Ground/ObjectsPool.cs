@@ -1,22 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class ObjectsPool : MonoBehaviour
 {
-    public static ObjectsPool _instantion;
-    
     [SerializeField] GameObject[] prefabs; //массива префабов для создания очереди из объектов
+    [Inject] private DiContainer diContainer;
+
 
     [SerializeField] int count; // количество объектов пула
-    public Queue<GameObject> Objects = new Queue<GameObject>();  
+    public Queue<GameObject> Objects = new Queue<GameObject>();
 
     private void Awake()
     {
-        if (!_instantion)
-        {
-            _instantion = this;
-        }
         System.Random random = new System.Random();
         InitPool(random);
     }
@@ -29,8 +26,9 @@ public class ObjectsPool : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            var tempGO = Instantiate(prefabs[random.Next(0, prefabs.Length)], transform, false);
-
+            var tempGO = diContainer.InstantiatePrefab(prefabs[random.Next(0, prefabs.Length)],
+                transform);
+            //var tempGO = Instantiate(prefabs[random.Next(0, prefabs.Length)], transform, false);
             tempGO.SetActive(false);
             Objects.Enqueue(tempGO);
         }

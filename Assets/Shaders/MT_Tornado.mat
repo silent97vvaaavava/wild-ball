@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MT_Tornado
+  m_Shader: {fileID: -6465566751694194690, guid: 6c5cbcd4714e5154e9e398d2145c755e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Noise:
+        m_Texture: {fileID: 2800000, guid: dbe724e1db87d3045ac5d3a09afcd16e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Alpha: 0.5
+    - _Emission: 1
+    - _FresnelGlow: 0.5
+    - _FresnelPower: 0.5
+    - _NumberOfWaves: 3
+    - _TextureSpeed: -1
+    - _WaveSpeed: -0.89
+    m_Colors:
+    - Vector3_A96E9C89: {r: -0.2, g: -0.5, b: 0, a: 0}
+    - _Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+    - _FresnelColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Reel: {r: 10, g: 0.3, b: 5, a: 0}
+    - _TextureSpeed: {r: -2.5, g: -1.98, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}

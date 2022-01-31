@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 /// <summary>
 /// Следеование камеры за игроком
@@ -19,6 +16,7 @@ public class FollowCamera : MonoBehaviour
 
     private void LateUpdate()
     {
+        if(playerPosition)
         transform.position = playerPosition.position + deltaDistance;
     }
 }
