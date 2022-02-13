@@ -1,50 +1,51 @@
+using System;
 using UnityEngine;
 using Zenject;
 
 public class PlayerUnit : MonoBehaviour, IAccelaration
 {
-    [SerializeField] ParticleSystem particle;
-    [SerializeField] float speed;
-    [SerializeField] float speedForward;
+    public Action ShowResult; 
+    [SerializeField] private ParticleSystem _particle;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _speedForward;
 
-    [Inject] private ResultScore result;
+    private ResultScore _result;
+    
+    private MovementUnit _movement;
+    private IInputUnit _inputUnit = new InputPlayer();
+    private Vector3 _direction;
 
-
-    MovementUnit movement;
-    IInputUnit inputUnit = new InputPlayer();
-
-    Vector3 direction;
-
-    public void Accelaration(float speed)
-    {
-        movement.Accelaration(speed);
-        if (speed < 0 && Mathf.Abs(speed) + 2.5f > speedForward)
-            return;
-        else 
-        if(speedForward < 20 || speed < 0)
-            speedForward += speed;
-    }
 
     private void Awake()
     {
-        movement = new MovementUnit(GetComponent<Rigidbody>());
+        _movement = new MovementUnit(GetComponent<Rigidbody>());
     }
 
     private void Update()
     {
-        direction = inputUnit.GetDirection(speed, speedForward);
+        _direction = _inputUnit.GetDirection(_speed, _speedForward);
     }
 
     private void FixedUpdate()
     {
-        movement.Movement(direction);
+        _movement.Movement(_direction);
+    }
+
+    public void Accelaration(float speed)
+    {
+        _movement.Accelaration(speed);
+        if (speed < 0 && Mathf.Abs(speed) + 2.5f > _speedForward)
+            return;
+        else
+        if (_speedForward < 20 || speed < 0)
+            _speedForward += speed;
     }
 
     public void Death()
     {
-        Instantiate(particle, transform.position, Quaternion.identity);
+        ShowResult?.Invoke();
+        Instantiate(_particle, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
-        result.ShowResult();
     }
 }
 

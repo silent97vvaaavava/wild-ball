@@ -1,32 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 public class Ground : MonoBehaviour
 {
-    [SerializeField] Transform nextPoint;
-    [SerializeField] GameObject[] coins;
-    public Vector3 nextPosition { get => nextPoint.position; }
+    [SerializeField] private Transform _nextPoint;
+    [SerializeField] private GameObject[] _coins;
+    private SpawnGround _spawn;
+    private ObjectsPool _pool;
 
-    System.Random random = new System.Random();
+    public Vector3 NextPosition => _nextPoint.position;
 
-    [Inject] private SpawnGround _spawn;
-    [Inject] private ObjectsPool _pool;
-
-    private void OnBecameInvisible()
+    [Inject]
+    public void Constract(SpawnGround spawn, ObjectsPool pool)
     {
+        _spawn = spawn;
+        _pool = pool;
+    }
+
+    public void DisableGround()
+    {
+
         ShowCoins();
-        _pool.DestroyObject(this.gameObject);
+        _pool.DestroyObject(gameObject);
         _spawn.SetGround();
     }
 
-    void ShowCoins()
+    private void ShowCoins()
     {
-        for (int i = 0; i < coins.Length; i++)
+        for (int i = 0; i < _coins.Length; i++)
         {
-            if (coins[i].activeSelf) continue;
-            coins[i].SetActive(true);
+            if (_coins[i].activeSelf) continue;
+            _coins[i].SetActive(true);
         }
     }
 }

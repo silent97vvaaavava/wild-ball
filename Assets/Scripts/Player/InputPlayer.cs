@@ -5,7 +5,10 @@ public class InputPlayer : IInputUnit
 {
     public Vector3 GetDirection(float speed, float speedForward)
     {
-        return new Vector3(Input.GetAxisRaw(GloabalInputsVars.INPUT_VERTICAL) * speedForward, 0,
-            -Input.GetAxisRaw(GloabalInputsVars.INPUT_HORIZONTAL) * speed) ;
+        float dirX = Input.GetAxisRaw(GloabalInputsVars.InputVertical) * speedForward;
+        float dirY = 0;
+        float dirZ = -Input.GetAxisRaw(GloabalInputsVars.InputHorizontal) * speed;
+
+        return new Vector3(dirX, dirY, dirZ) ;
     }
 }

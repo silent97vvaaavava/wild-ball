@@ -4,12 +4,21 @@ using Zenject;
 
 public class ResultScore : MonoBehaviour
 {
-    [SerializeField] Text result;
-    [Inject] ScoreData score;
+    [SerializeField] private Text _result;
+    private ScoreData _score;
+    private PlayerUnit _playerUnit;
+
+    [Inject]
+    public void Construct(PlayerUnit playerUnit, ScoreData score)
+    {
+        _playerUnit = playerUnit;
+        _playerUnit.ShowResult = ShowResult;
+        _score = score;
+    }
 
     public void ShowResult()
     {
-        this.gameObject.SetActive(true);
-        result.text = score.Score.ToString();
+        gameObject.SetActive(true);
+        _result.text = _score.Score.ToString();
     }
 }

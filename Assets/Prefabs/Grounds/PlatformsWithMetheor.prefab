@@ -340,7 +340,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a50d490079198d54587c606275a48efc, type: 2}
+  - {fileID: 2100000, guid: a357d3586cc3dd648a077b7da05ca4e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -396,8 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d361cbfe7be8be419515aeaa5ee64d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextPoint: {fileID: 40880386300322416}
-  coins:
+  _nextPoint: {fileID: 40880386300322416}
+  _coins:
   - {fileID: 3902393397968817370}
   - {fileID: 1101296120133586847}
   - {fileID: 5894132442391729660}
@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 2813042724129675198}
   - component: {fileID: 2813042724129675136}
   - component: {fileID: 2813042724129675137}
+  - component: {fileID: 1566659513238668473}
   m_Layer: 0
   m_Name: BottomBorder
   m_TagString: Barrier
@@ -446,8 +447,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 23, y: 1, z: 15}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 33.5307, y: 1, z: 15}
+  m_Center: {x: 0.21581364, y: 0, z: 0}
 --- !u!54 &2813042724129675137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -464,6 +465,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1566659513238668473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813042724129675199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90013d934b8c9164d820aaab44b974dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5570044582267014219
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +486,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 40880386300322416}
+  - component: {fileID: 5238592931355207960}
+  - component: {fileID: 887309306924395836}
   m_Layer: 0
   m_Name: Point (2)
   m_TagString: Untagged
@@ -494,6 +509,32 @@ Transform:
   m_Father: {fileID: 352614507837250886}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5238592931355207960
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570044582267014219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.24575806, y: 2.1481972, z: 7.407732}
+  m_Center: {x: 1, y: 0, z: 0}
+--- !u!114 &887309306924395836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570044582267014219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a66c5cd170c1543856e46bbb5ee69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ground: {fileID: 2134641589542529340}
 --- !u!1001 &352614506856569646
 PrefabInstance:
   m_ObjectHideFlags: 0

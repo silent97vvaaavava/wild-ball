@@ -1,22 +1,28 @@
 ﻿using UnityEngine;
+using Zenject;
 
 /// <summary>
 /// Следеование камеры за игроком
 /// </summary>
-[RequireComponent(typeof(Camera))]
 public class FollowCamera : MonoBehaviour
 {
-    [SerializeField] Transform playerPosition;
-    [SerializeField] Vector3 deltaDistance;
+    [SerializeField] private Vector3 _deltaDistance;
+    private PlayerUnit _playerUnit;
+
+    [Inject]
+    public void Construct(PlayerUnit playerUnit)
+    {
+        _playerUnit = playerUnit;
+    }
 
     private void Awake()
     {
-        transform.position = playerPosition.position + deltaDistance;
+        transform.position = _playerUnit.transform.position + _deltaDistance;
     }
 
     private void LateUpdate()
     {
-        if(playerPosition)
-        transform.position = playerPosition.position + deltaDistance;
+        if(_playerUnit)
+        transform.position = _playerUnit.transform.position + _deltaDistance;
     }
 }

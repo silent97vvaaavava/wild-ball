@@ -3,27 +3,27 @@ using Zenject;
 
 public class Coin : MonoBehaviour
 {
-    [Inject] ScoreData _score;
+    [Inject] private ScoreData _score;
 
-    Animator animator;
+    private Animator _animator;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.TryGetComponent<PlayerUnit>(out var player))
         {
-            animator.SetTrigger("Destroy");
+            _animator.SetTrigger("Destroy");
         }
     }
 
     void DestroyObj()
     {
         gameObject.SetActive(false);
-        _score.UpdateScore();
+        _score.UpdateScoreText();
     }
 }

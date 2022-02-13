@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1092469855}
   - component: {fileID: 1092469857}
   - component: {fileID: 1092469856}
+  - component: {fileID: 2695433482780589680}
   m_Layer: 0
   m_Name: BottomBorder
   m_TagString: Barrier
@@ -43,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16, y: 1, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 22.046976, y: 1, z: 10}
+  m_Center: {x: -0.34023762, y: 0, z: 0}
 --- !u!54 &1092469856
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -61,6 +62,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2695433482780589680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092469854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90013d934b8c9164d820aaab44b974dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3520250281381811421
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,6 +83,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9009321918654855910}
+  - component: {fileID: 1297229373016911452}
+  - component: {fileID: 7682615437298409463}
   m_Layer: 0
   m_Name: Point (2)
   m_TagString: Untagged
@@ -91,6 +106,32 @@ Transform:
   m_Father: {fileID: 8751070174054493240}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1297229373016911452
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520250281381811421}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.24575806, y: 2.1481972, z: 7.407732}
+  m_Center: {x: 1, y: 0, z: 0}
+--- !u!114 &7682615437298409463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520250281381811421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a66c5cd170c1543856e46bbb5ee69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ground: {fileID: 6920189591577375146}
 --- !u!1 &8751070173213362624
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +442,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a50d490079198d54587c606275a48efc, type: 2}
+  - {fileID: 2100000, guid: a357d3586cc3dd648a077b7da05ca4e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -457,8 +498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d361cbfe7be8be419515aeaa5ee64d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextPoint: {fileID: 9009321918654855910}
-  coins:
+  _nextPoint: {fileID: 9009321918654855910}
+  _coins:
   - {fileID: 9093997796228997053}
   - {fileID: 8714884705140675807}
   - {fileID: 3715480807804792638}
@@ -1458,6 +1499,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8751070174054493240}
     m_Modifications:
+    - target: {fileID: 4840986672548950777, guid: d51663d763c6b9342be8026024db8a1b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.78
+      objectReference: {fileID: 0}
     - target: {fileID: 8341121596639164373, guid: d51663d763c6b9342be8026024db8a1b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1466,7 +1512,7 @@ PrefabInstance:
     - target: {fileID: 8341121596639164373, guid: d51663d763c6b9342be8026024db8a1b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.92
+      value: 6.15
       objectReference: {fileID: 0}
     - target: {fileID: 8341121596639164373, guid: d51663d763c6b9342be8026024db8a1b,
         type: 3}
@@ -1476,7 +1522,7 @@ PrefabInstance:
     - target: {fileID: 8341121596639164373, guid: d51663d763c6b9342be8026024db8a1b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.99
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 8341121596639164373, guid: d51663d763c6b9342be8026024db8a1b,
         type: 3}

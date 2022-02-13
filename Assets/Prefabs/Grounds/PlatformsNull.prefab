@@ -309,7 +309,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a50d490079198d54587c606275a48efc, type: 2}
+  - {fileID: 2100000, guid: a357d3586cc3dd648a077b7da05ca4e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -365,8 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d361cbfe7be8be419515aeaa5ee64d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextPoint: {fileID: 1068062332120093523}
-  coins:
+  _nextPoint: {fileID: 1068062332120093523}
+  _coins:
   - {fileID: 4065535950842412537}
   - {fileID: 3343095509967930310}
   - {fileID: 4082216995659643304}
@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 2975285072803358365}
   - component: {fileID: 2975285072803358371}
   - component: {fileID: 2975285072803358370}
+  - component: {fileID: 1414340818467390298}
   m_Layer: 0
   m_Name: BottomBorder
   m_TagString: Barrier
@@ -448,8 +449,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12, y: 1, z: 15}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 18.050266, y: 1, z: 15}
+  m_Center: {x: 0.40232992, y: 0, z: 0}
 --- !u!54 &2975285072803358370
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -466,6 +467,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1414340818467390298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975285072803358364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90013d934b8c9164d820aaab44b974dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4832221112342756712
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +488,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068062332120093523}
+  - component: {fileID: 2400185256361606482}
+  - component: {fileID: 5749833510164496875}
   m_Layer: 0
   m_Name: Point (2)
   m_TagString: Untagged
@@ -496,6 +511,32 @@ Transform:
   m_Father: {fileID: 767587141814430821}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2400185256361606482
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832221112342756712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.24575806, y: 2.1481972, z: 7.407732}
+  m_Center: {x: 1, y: 0, z: 0}
+--- !u!114 &5749833510164496875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832221112342756712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a66c5cd170c1543856e46bbb5ee69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ground: {fileID: 1431155403889924127}
 --- !u!1001 &1684628663577867783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -781,15 +822,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f43150c74ab20942b0a4d922225bce5, type: 3}
---- !u!1 &4065535950842412537 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9194852046519219608, guid: 5f43150c74ab20942b0a4d922225bce5,
-    type: 3}
-  m_PrefabInstance: {fileID: 5183927190588721249}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4065535950842412536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9194852046519219609, guid: 5f43150c74ab20942b0a4d922225bce5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5183927190588721249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4065535950842412537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9194852046519219608, guid: 5f43150c74ab20942b0a4d922225bce5,
     type: 3}
   m_PrefabInstance: {fileID: 5183927190588721249}
   m_PrefabAsset: {fileID: 0}

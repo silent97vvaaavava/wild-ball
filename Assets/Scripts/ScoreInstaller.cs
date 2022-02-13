@@ -3,13 +3,12 @@ using Zenject;
 
 public class ScoreInstaller : MonoInstaller
 {
-    [SerializeField] private ScoreData score;
-    [SerializeField] private ResultScore result;
-
+    [SerializeField] private ScoreData _score;
+    [SerializeField] private ShowLevel _showLevel;
 
     public override void InstallBindings()
     {
-        Container.Bind<ScoreData>().FromInstance(score).AsSingle().NonLazy();
-        Container.Bind<ResultScore>().FromInstance(result).AsSingle().NonLazy();
+        Container.Bind<ScoreData>().FromInstance(_score).AsSingle().NonLazy();
+        Container.Bind<ShowLevel>().FromInstance(_showLevel).AsSingle().NonLazy();
     }
 }

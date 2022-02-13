@@ -3,22 +3,21 @@
 [System.Serializable]
 public class MovementUnit : IMoveAccelaration
 {
-    Rigidbody rb;
+    Rigidbody _rigidbody;
 
-    public MovementUnit(Rigidbody rb)
+    public MovementUnit(Rigidbody rigidbody)
     {
-        this.rb = rb;
+        this._rigidbody = rigidbody;
     }
 
     public void Accelaration(float accel)
     {
-        //rb.AddRelativeForce(Vector3.right * accel, ForceMode.Impulse);
-        rb.AddForce(Vector3.right * accel, ForceMode.Impulse);
+        _rigidbody.AddForce(Vector3.right * accel, ForceMode.Impulse);
     }
 
     public void Movement(Vector3 vectorMove)
     {
-        rb.AddForce(vectorMove + rb.velocity, ForceMode.Force);
+        _rigidbody.AddForce(vectorMove + _rigidbody.velocity, ForceMode.Force);
     }
 }
 

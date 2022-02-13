@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class AccelarationPlane : MonoBehaviour
 {
-    [SerializeField] float accelaration;
+    [SerializeField] private float _accelaration;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.TryGetComponent<IAccelaration>(out var accelaration))
         {
-            other.GetComponent<IAccelaration>().Accelaration(accelaration);
+            accelaration.Accelaration(_accelaration);
         }
     }
 }

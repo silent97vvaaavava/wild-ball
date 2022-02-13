@@ -4,9 +4,9 @@ public class ParticleCollision : MonoBehaviour
 {
     private void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Player"))
+        if (other.TryGetComponent<PlayerUnit>(out var unit))
         {
-            other.GetComponent<PlayerUnit>().Death();
+            unit.Death();
         }
     }
 }

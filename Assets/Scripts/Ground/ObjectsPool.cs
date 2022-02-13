@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class ObjectsPool : MonoBehaviour
+public class ObjectsPool : MonoBehaviour, IAddPlatform
 {
-    [SerializeField] GameObject[] prefabs; //массива префабов для создания очереди из объектов
-    [Inject] private DiContainer diContainer;
-
-
-    [SerializeField] int count; // количество объектов пула
     public Queue<GameObject> Objects = new Queue<GameObject>();
+
+    [SerializeField] private GameObject[] _prefabs; //массива префабов для создания очереди из объектов
+    [SerializeField] private GameObject[] _addPref;
+    [SerializeField] private int _count; // количество объектов пула
+
+    [Inject] private DiContainer _diContainer;
 
     private void Awake()
     {
@@ -18,20 +18,11 @@ public class ObjectsPool : MonoBehaviour
         InitPool(random);
     }
 
-    /// <summary>
-    /// Создание пула при включении игры
-    /// </summary>
-    /// <param name="random"></param>
-    void InitPool(System.Random random)
+    public void AddPlatform(int index)
     {
-        for (int i = 0; i < count; i++)
-        {
-            var tempGO = diContainer.InstantiatePrefab(prefabs[random.Next(0, prefabs.Length)],
-                transform);
-            //var tempGO = Instantiate(prefabs[random.Next(0, prefabs.Length)], transform, false);
-            tempGO.SetActive(false);
-            Objects.Enqueue(tempGO);
-        }
+        _count++;
+        var tempIndex = index % _addPref.Length;
+        Objects.Enqueue(AddToPool(_addPref[tempIndex]));
     }
 
     /// <summary>
@@ -41,7 +32,6 @@ public class ObjectsPool : MonoBehaviour
     public GameObject GetObject()
     {
         var obj = Objects.Dequeue();
-        //obj.SetActive(true);
         return obj;
     }
 
@@ -52,7 +42,29 @@ public class ObjectsPool : MonoBehaviour
     public void DestroyObject(GameObject ob)
     {
         Objects.Enqueue(ob);
-        ob.SetActive(false); 
+        ob.SetActive(false);
     }
 
+    /// <summary>
+    /// Создание пула при включении игры
+    /// </summary>
+    /// <param name="random"></param>
+    private void InitPool(System.Random random)
+    {
+        for (int i = 0; i < _count; i++)
+        {
+            var tempGO = _diContainer.InstantiatePrefab(_prefabs[random.Next(0, _prefabs.Length)],
+                transform);
+            tempGO.SetActive(false);
+            Objects.Enqueue(tempGO);
+        }
+    }
+
+    private GameObject AddToPool(GameObject prefab)
+    {
+        var tempGO = _diContainer.InstantiatePrefab(prefab, transform);
+        tempGO.SetActive(false);
+        return tempGO;
+    }
+    
 }
